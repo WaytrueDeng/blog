@@ -1,3 +1,11 @@
+* {
+/*background-color: red;*/
+}
+
+html {
+background-color: red;
+}
+
 html,
 body {
   padding: 0;
@@ -36,3 +44,4 @@ button {
   padding: 0.5rem 1rem;
   font-weight: bold;
 }
+
