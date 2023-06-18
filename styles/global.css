@@ -68,7 +68,8 @@
 @media screen and (min-width: 1081px) {
   div.container {
   margin-left: 20vw;
-  margin-right: 1vw;
+  margin-right: 5vw;
+  width: 70vw;
 
   }
   div.backlink {
