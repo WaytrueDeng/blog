@@ -6,11 +6,13 @@ import ReactMarkdown from 'react-markdown'
 import ReactDom from 'react-dom'
 import  wikiLinkPlugin from 'remark-wiki-link'
 import Image from 'next/image' 
-
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
+import {nord} from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 export default function Post({postData}) {
-  return (<Layout>
-    <h1>{postData.title}</h1>
+
+
+  return (<Layout backLinks={postData.backlinks} title={postData.title}>
     <ReactMarkdown children={postData.mdcontent} remarkPlugins={[[wikiLinkPlugin,{hrefTemplate: (permalink) => `${permalink}`,pageResolver: (name) => [name.replace(/ /g, '_')]}]]}
     
     components={
@@ -25,7 +27,23 @@ export default function Post({postData}) {
     style={imageStyle} alt="image missing"
       />
 
-    }  
+    },
+        code({node, inline, className, children, ...props}) {
+        const match = /language-(\w+)/.exec(className || '')
+        return !inline && match ? (
+          <SyntaxHighlighter
+            {...props}
+            children={String(children).replace(/\n$/, '')}
+            language={match[1]}
+            style={nord}
+            PreTag="div"
+          />
+        ) : (
+          <code {...props} className={className}>
+            {children}
+          </code>
+        )
+      }
 
   }
     }

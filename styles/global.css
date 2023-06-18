@@ -4,28 +4,87 @@
 
 @layer base {
   html {
-    @apply  bg-fixed bg-gradient-to-t from-slate-950/90 to-slate-800/90 text-slate-200 ;
+    @apply  bg-fixed bg-gradient-to-t from-slate-950/90 to-slate-800/90 text-slate-300/90 ;
+    text-align: justify;
   }
   body {
     min-height: 100%
 
   }
+  h2,h3,h4,h5,h6 {
+  @apply text-cyan-300/60;
+  }
   h1 {
     @apply text-sky-200 text-4xl text-center;
   }
   h2 {
-    @apply text-xl;
+    @apply text-xl my-2 before:content-['①'];
   }
+  h3 {
+    @apply text-xl ml-2 my-2 before:content-['②'];
+  }
+  h4 {
+    @apply text-xl ml-4 my-2 before:content-['③'];
+  }
+  h5 {
+    @apply text-xl ml-6 my-2 before:content-['④'];
+  }
+  h6 {
+    @apply text-xl ml-8 my-2 before:content-['⑤'];
+  }
+  li {
+    @apply list-disc ml-8;
+  }
+
+  li>p{
+    @apply ml-0;
+  }
+  p,pre {
+    @apply ml-10;
+    }
+
   pre {
     max-height: 300px;
     @apply overflow-auto;
   }
   a {
-    @apply text-blue-400 hover:bg-slate-200 underline underline-offset-1 decoration-2;
+    @apply text-blue-400 hover:bg-slate-200 underline underline-offset-1 decoration-1;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    /* Non standard for webkit */
   }
 
   p {
     @apply pt-2;
+
+  }
+
+  div.backlink {
+  position: fixed;
+  top: 8vh;
+  left: 1vw;
+  width:19vw;
+  height: 92vh;
+  @apply bg-slate-800/20 backdrop-blur-xl  overflow-auto;
+
+  }
+
+  div.backlink > ul > li > a {
+    -ms-word-break: keep-all;
+    word-break: keep-all;
+  }
+  
+  .nav {
+    width: 100%;
+    height: 8vh;
+    @apply bg-slate-800/50 backdrop-blur-sm;
+    position:sticky;
+    font-size: 2vw;
+    top:0;
+
+  }
+  .nav>h1 {
+    font-size: max(30px,3vw);
   }
 
   /* width */
